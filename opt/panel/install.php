@@ -9,21 +9,21 @@ if (!empty($_POST['user'])) {
 ?><!doctype html>
 <html>
 <head>
-	<title>Install MCGG</title>
+	<title>Install ColourPanel</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="stylesheet" href="css/bootstrap.min.css">
 	<link rel="stylesheet" href="css/bootstrap-responsive.min.css">
 	<link rel="stylesheet" href="css/smooth.css" id="smooth-css">
-	<meta name="author" content="Alan Hardman (http://phpizza.com)">
+	<meta name="author" content="TheOddCompanyCEO (https://theoddcompanyceo.github.io)">
 </head>
 <body>
 <?php if (is_file(".installed")) { ?>
 	<div class="modal">
 		<div class="modal-header">
-			<h3>Install MCGG</h3>
+			<h3>Install ColourPanel</h3>
 		</div>
 		<div class="modal-body">
-			<p>MCGG has already been installed.</p>
+			<p>ColourPanel has already been installed.</p>
 
 			<p class="alert alert-info">If you are sure it is not installed, delete the <code>.installed</code> file and refresh this page.</p>
 		</div>
@@ -34,10 +34,10 @@ if (!empty($_POST['user'])) {
 <?php } elseif (!empty($_POST['user'])) { ?>
 	<div class="modal">
 		<div class="modal-header">
-			<h3>Install MCHostPanel</h3>
+			<h3>Install ColourPanel</h3>
 		</div>
 		<div class="modal-body">
-			<p>MCHostPanel has been installed, and you are now logged in.</p>
+			<p>ColourPanel has been installed, and you are now logged in.</p>
 		</div>
 		<div class="modal-footer">
 			<a class="btn btn-success" href="dashboard.php">Continue to Panel</a>
@@ -46,7 +46,7 @@ if (!empty($_POST['user'])) {
 <?php } else { ?>
 	<form class="modal form-horizontal" action="install.php" method="post">
 		<div class="modal-header">
-			<h3>Install MCHostPanel</h3>
+			<h3>Install ColourPanel</h3>
 		</div>
 		<div class="modal-body">
 			<legend>Administrator User</legend>
