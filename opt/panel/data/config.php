@@ -1,4 +1,4 @@
-<?php // MCHostPanel Configuration
+<?php // ColourPanel Configuration
 
 // Server IP Address
 define('KT_LOCAL_IP','127.0.0.1');
