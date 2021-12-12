@@ -4,22 +4,22 @@ require_once dirname(__FILE__) . '/data/config.php';
 
 //CLI overwrites
 if (PHP_SAPI !== 'cli') {
-	error_log("MCHostPanel Backup: Attempted to run backup-run.php over HTTP!");
+	error_log("ColourPanel Backup: Attempted to run backup-run.php over HTTP!");
 	exit("Invalid access type\r\n");
 }
 
 if(!isset($argv[2])) {
-	error_log("MCHostPanel Backup: No secret supplied!");
+	error_log("ColourPanel Backup: No secret supplied!");
 	exit("No user supplied!\r\n");
 }
 
 if(!isset($argv[1])) {
-	error_log("MCHostPanel Backup: No user supplied!");
+	error_log("ColourPanel Backup: No user supplied!");
 	exit("No user supplied!\r\n");
 }
 
 if(!isset($argv[3])) {
-	error_log("MCHostPanel Backup: No backup auto-delete supplied!");
+	error_log("ColourPanel Backup: No backup auto-delete supplied!");
 	exit("No auto-delete supplied!\r\n");
 }
 
@@ -38,13 +38,13 @@ if (!$user) {
 	$user = preg_replace('/[^A-Za-z0-9\- ]/', '', $name);
 	
 	// User does not exist, redirect to login page
-	error_log("MCHostPanel Backup: '" . $user . "' user does not exist!");
+	error_log("ColourPanel Backup: '" . $user . "' user does not exist!");
 	exit('Not Authorized\r\n');
 }
 
 //Make sure this page is run via cron and not from URL guessing
 if($secret != hash("sha256", $user['pass'])) {
-	error_log("MCHostPanel Backup: Invalid secret!");
+	error_log("ColourPanel Backup: Invalid secret!");
 	exit('Not Authorized\r\n');
 }
 
@@ -61,7 +61,7 @@ sleep(30);
 server_cmd($user['user'], "/save-off");
 
 //Notify players the world is backing up
-server_cmd($user['user'], "/say [MCBackup] Starting backup...");
+server_cmd($user['user'], "/say [ColourBackup] Starting backup...");
 
 if(!is_dir($user['home'] . "/" . "backups")){
 	mkdir($user['home'] . "/" . "backups");
@@ -93,17 +93,17 @@ try {
 	unlink($user['home'] . "/" . "backups/" . $archiveFile);
 	
 } catch (Exception $e) {
-	error_log("MCHostPanel Backup: '" . $user . "' Backup Failure!\r\nException : " . $e);
+	error_log("ColourPanel Backup: '" . $user . "' Backup Failure!\r\nException : " . $e);
 	exit("Exception : " . $e . "\r\n");
 }
 
 //Notify players the backup is done
-server_cmd($user['user'], "/say [MCHostPanel] Backup complete");
+server_cmd($user['user'], "/say [ColourPanel] Backup complete");
 
 //Turn auto-saves back on
 server_cmd($user['user'], "/save-on");
 
-echo "MCHostPanel Backup Success\r\n";
+echo "ColourPanel Backup Success\r\n";
 
 /**
  * Pass a command to a running server
